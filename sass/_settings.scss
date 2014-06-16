@@ -1,0 +1,28 @@
+// Vertical Rhythm 
+@import "compass/typography/vertical_rhythm";
+
+$base-font-size: 16px;
+$base-line-height: 6px;
+
+@include establish-baseline;
+
+html {
+  @include adjust-leading-to(4);
+}
+
+$cBackground: #E6E6E6;
+
+// Grid System :
+
+$susy: (
+  global-box-sizing: border-box,
+  columns: 16,
+/*
+  debug: (
+    image: show,
+    color: rgba(0,0,0,0.1),
+    output: background,
+    toggle: top right,
+  )
+*/
+);

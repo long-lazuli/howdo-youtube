@@ -1,0 +1,295 @@
+@import "compass";
+@import "compass/reset";
+@import "settings";
+@import 'susy'; 
+@import 'breakpoint'; 
+//@import "mixins/usefull";
+
+
+
+@include border-box-sizing;
+
+@import 'custom/styles';
+@import 'custom/form';
+
+
+@import 'font-awesome/variables';
+@import 'font-awesome/path';
+@import 'custom/fa-spin';
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+$bp-tablet: 640px;
+
+body {
+    font-family: 'Calibri','sans-serif';
+}
+
+.container {
+  @include pencil-borders;
+  
+  padding: 1em;
+  margin: 0 auto;
+  display: block;
+  @include container;
+  @include breakpoint(1200px) {
+    @include container(1140px);
+  }
+  @include clearfix;
+}
+
+h1 {
+  @include adjust-font-size-to(24px);
+  @include rhythm(0, 0, 0, 0, 24px);
+  text-align: center;
+  font-weight: bold;
+}
+h2 {
+  @include adjust-font-size-to(22px);
+  @include rhythm(0, 0, 0, 0, 22px);
+  font-weight: bold;
+}
+
+h3 {
+  @include adjust-font-size-to(20px);
+  @include rhythm(0, 0, 0, 0, 20px);
+  font-weight: bold;
+}
+
+h4 {
+  @include adjust-font-size-to(18px);
+  @include rhythm(0, 0, 0, 0, 18px);
+  font-weight: bold;
+}
+
+header,
+section,
+footer {
+  @include clearfix;
+}
+aside,
+header,
+section {
+  @include rhythm(1, 0, 0, 1, 20px);
+}
+
+header {
+  h1 {
+  }
+  form {
+
+    input {
+      @include span(14);
+
+      @include breakpoint($bp-tablet) {
+        @include span(12);
+      }
+    }
+    button {
+      @include span(2 last);
+      @include changeText('Go');
+
+
+      @include breakpoint($bp-tablet) {
+        @include span(4 last);
+        @include resetText;
+      }
+    }
+  }
+}
+
+#video-player {
+  margin-bottom: 1em;
+  @include pencil-borders;
+  @include clearfix;
+  @include nested(16){
+
+  &[data-state='-1'] h2:before { content: $fa-var-film; }// UNSTARTED
+  &[data-state='0']  h2:before { content: $fa-var-stop; }// ENDED
+  &[data-state='1']  h2:before { content: $fa-var-play; }// PLAYING
+  &[data-state='3']  h2:before { content: $fa-var-spinner; @include fa-spin; }// BUFFERING
+  &[data-state='2']  h2:before { content: $fa-var-pause; }// PAUSED
+  &[data-state='5']  h2:before { content: "CUES"; }// CUES
+  
+    h2 {
+      text-align: center;
+      position: relative;
+      padding-left: span(1);
+      &:before{
+        text-align: center;
+        left: 0;
+        font-family: FontAwesome;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        position: absolute;
+        transform-origin: 50% 50%;
+      }
+      @include span(15);
+      @include breakpoint($bp-tablet) {
+        //@include span(12);
+      }
+    }
+    label{
+      @include span(1 last);
+      &:after {
+        text-align: right;
+      }
+      @include changeText($fa-var-caret-square-o-up);
+      @include breakpoint($bp-tablet) {
+      //  @include showText;
+      //  @include span(4 last);
+      }
+    }
+
+    iframe {
+      @include span(16 last)
+    }
+  }
+  label {
+    &:after {
+      font-family: FontAwesome;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+  #hide-video-frame:checked ~ label:after {
+      content: $fa-var-caret-square-o-down;
+  }
+  #hide-video-frame:checked ~ iframe {
+    height: 0 !important;
+  }
+  @include span(16 last);
+  display: none;
+  &.active {
+      display: block;
+  }
+}
+
+nav {
+  text-align: center;
+}
+
+iframe,
+.video-thumb {
+  @include pencil-borders(black, 3);
+  background-clip: padding-box;
+  background-color: black;
+}
+
+
+section {
+//  @include rhythm(1,0,0,1, 16px);
+  @include span(16 last);
+
+
+  hr {
+    @include clearfix;
+    @include span(16 last);
+
+  }
+
+  // Mobile :
+  h3 {
+    @include span(16 last);
+  }
+  .video {
+    // TODO: problem with this clearfix :
+  //  @include clearfix;
+    &.active {
+      background-color: $cBackground;
+    }
+  }
+  .video-thumb,
+  .video-actions,
+  .video-desc {
+    @include span(16 last);
+  }
+  nav {
+    @include span(16 last);
+  }
+
+  // Tablet
+  @include breakpoint($bp-tablet) {
+    @include span(11);
+    @include nested(11){
+
+      h3 {
+        @include span(11 last);
+      }
+      .video-thumb {
+        @include span(5);
+      }
+
+      .video-actions,
+      .video-desc {
+        @include span(6 last);
+      }
+      nav {
+        @include span(11 last);
+      }
+    }
+  }
+
+  aside {
+    @include span(16 last);
+    @include breakpoint($bp-tablet) {
+//      margin-top: rhythm(5);
+      @include span(5 last);
+    }
+  }
+
+}
+
+#video-list-related {
+  [itemprop=description] {
+    display: none;
+  }
+}
+
+aside {
+  h3 {
+    @include span(16 last);
+    @include breakpoint($bp-tablet) {
+      @include span(5 last);
+    }
+    text-align: center;
+  }
+  h3 {
+    border: 2px solid black;
+    border-radius: 2px 2px 0 0;
+  }
+  li {
+    border-color: block;
+    border-width: 1px 2px;
+    border-style: solid;
+  }
+  li:last-child {
+    border-bottom-width: 2px;
+    border-radius: 0 0 2px 2px;
+  }
+  ol {
+    margin-bottom: 1em;
+    @include span(16 last);
+    @include breakpoint($bp-tablet) {
+      @include span(5 last);
+    }
+    li { width: 100%;}
+  }
+//  @include pencil-borders;
+  nav {
+    display: none;
+  }
+}
+ol.search-list {
+  li {
+
+      text-align: center;
+  }
+}

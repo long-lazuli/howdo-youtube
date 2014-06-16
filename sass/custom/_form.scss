@@ -1,0 +1,76 @@
+form {
+  input {
+    @include pencil-borders;
+  }
+  button {
+    @include pencil-borders('button');
+    background-color: $cBackground;
+    background-clip: padding-box;
+  }
+
+}
+
+hr {
+  border: none;
+  //border: 1px solid black;
+}
+
+input[type="checkbox"].toggleCheck {
+  display: none;  
+}
+
+label[for] {
+  cursor: pointer;
+}
+
+.paging-button {
+  &:disabled {
+    cursor: default;
+    font-weight: normal;
+  }
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-weight: bold;
+  
+}
+
+
+@mixin hideText(){
+  &:after {
+    // One day, We will able to do :
+    display: inline-block;
+    overflow: visible;
+    text-indent: 0;
+    position: absolute;
+    left: 0;
+    width: 100%;
+  }
+//  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  text-indent: -9999px;
+}
+
+@mixin changeText($text: ''){
+  @include hideText;
+  &:after {
+    // One day, We will able to do :
+    content: attr('alt');
+
+    content: $text;
+  }
+}
+
+@mixin showText(){
+  text-indent: 0;  
+}
+
+@mixin resetText(){
+  @include showText;
+  &:after {
+    content: none;
+    display: none;
+  }
+}

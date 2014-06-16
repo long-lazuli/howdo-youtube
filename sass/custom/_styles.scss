@@ -1,0 +1,9 @@
+@mixin pencil-borders($style: null, $width: 8){
+  border: dotted black 3px;
+  border-width: #{$width}px;
+	$url: 'images/borders.png';
+	@if( $style ){
+		$url: 'images/borders-#{$style}.png';
+	}
+	border-image: url($url) $width $width $width $width stretch;
+}

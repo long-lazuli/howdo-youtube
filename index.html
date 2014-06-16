@@ -1,0 +1,124 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  
+  <!--[if IE]>
+      <link href="/stylesheets/browsers/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <![endif]-->
+
+  <!-- I use prefix-free to avoid using prefix on css development.
+    In production, we may instead put the prefix and minimize the CSS. -->
+  <script src="scripts/vendor/prefixfree.min.js" type="text/javascript"></script>
+  
+  <script src="scripts/application.js" type="text/javascript"></script>
+
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <h1>HowDo.YouTube?</h1>
+      <form method="ajax" action="#search" onsubmit="application.search()">
+        <input type="text" id="query" />
+        <button id="search-button" disabled type="submit" alt="Go">Search Youtube</button>
+      </form>
+    </header>
+
+
+    <section id="video-list-search">
+
+      <div  id="video-player">
+        <input checked type="checkbox" id="hide-video-frame" class="toggleCheck">
+        <h2></h2>
+        <label for="hide-video-frame">Video Visibility</label>
+        <div id="video-frame"></div>
+      </div>
+
+      <h3>Your Search Results</h3> 
+
+      <nav>
+        <button disabled class="paging-button prev-button" onclick="application.prevPage('video-list-search');">&lt; previous</button>
+        <button disabled class="paging-button next-button" onclick="application.nextPage('video-list-search');">next &gt;</button>
+      </nav>
+
+      <template class="video-tpl">
+        <div class="video" itemprop="video" itemscope itemtype="http://schema.org/VideoObject" itemid="">
+          <img class="video-thumb" src="" />
+          <meta itemprop="embedURL" content="http://www.youtube.com/watch?v=ODBHEBMYQdQ" />
+          <meta itemprop="thumbnailURL" content="" />
+
+          <div class="video-desc">
+            <h4 itemprop="name"></h4>
+            <span itemprop="description"></span>
+          </div>
+          <div class="video-actions" itemprop="actions">
+            <a href="#play" class="video-click play" onclick="application.play(this);">Play</a>
+            <a href="#enqueue" class="video-click enqueue" onclick="application.enqueue(this);">Enqueue</a>
+          </div>
+
+        </div>
+        <hr />
+      </template>
+
+      <div class="video-list">
+        Make a search !
+      </div>
+
+      <nav>
+        <button disabled class="paging-button prev-button" onclick="application.prevPage('video-list-search');">&lt; previous</button>
+        <button disabled class="paging-button next-button" onclick="application.nextPage('video-list-search');">next &gt;</button>
+      </nav>
+
+    </section>
+
+    <aside class="recentSearchVideos" id="search-list-recent">
+      <h3>Most Recent Searches</h3>
+      <template class="search-tpl">
+        <li class="search" itemprop="search" itemscope itemtype="http://schema.org/SearchObject" itemid="">
+          <meta itemprop="embedURL" content="http://www.youtube.com/watch?v=ODBHEBMYQdQ" />
+          <meta itemprop="thumbnailURL" content="" />
+          <a itemprop="name" href="#search" class="search-click" onclick="application.retrieveSearch(this);">
+          </a>
+        </li>
+      </template>
+      <ol class="search-list">
+        
+      </ol>
+    </aside>
+
+    <aside class="relatedVideos" id="video-list-related">
+      <h3>Stuff you may like:</h3>
+      <template class="video-tpl">
+        <li class="video" itemprop="video" itemscope itemtype="http://schema.org/VideoObject" itemid="">
+          <a href="#play" class="video-click" onclick="application.play(this);"><img class="video-thumb" src="" /></a>
+          <meta itemprop="embedURL" content="http://www.youtube.com/watch?v=ODBHEBMYQdQ" />
+          <meta itemprop="thumbnailURL" content="" />
+
+          <div class="video-desc">
+            <h4 itemprop="name"></h4>
+            <span itemprop="description"></span>
+          </div>
+        </li>
+      </template>
+
+      <ol class="video-list">
+      </ol>
+
+      <nav>
+        <button disabled class="paging-button prev-button" onclick="application.prevPage('video-list-related');">&lt;</button>
+        <button disabled class="paging-button next-button" onclick="application.nextPage('video-list-related');">&gt;</button>
+      </nav>
+
+    </aside>
+
+  </div>
+
+    <script src="https://apis.google.com/js/client.js?onload=setGoogleAPIKey"></script>
+    <script src="https://www.youtube.com/player_api"></script>
+
+
+
+</body>
+</html>
