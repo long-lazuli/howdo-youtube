@@ -5,16 +5,20 @@ var application = {
         empty_search_onStart: false,
         show_player_on_play: true
     },
+    flags: {
+      // 0 is not loadable
+      // 1 is loadable
+      // 2 is initialised
+      playerLoaded: 0
+    },
     pagination: {},
     searchCache: {},
-    player: {},
+    player: false,
     
     // The main function :
     init: function(){
       var app = this;
       app._log('Initialisation.');
-      if(app.options.empty_search_onStart)
-        app.search('video-list-search');
  
       document.getElementById('search-button').disabled = false;
  
@@ -242,7 +246,7 @@ var application = {
 
     onPlayerAPIReady: function(){
       var app = this;
-
+      app.flags.playerLoaded = 1;
       application.player = new YT.Player('video-frame', {
         events: {
             'onReady': app.onPlayerReady,
@@ -252,8 +256,11 @@ var application = {
       });
     },
 
+
     onPlayerReady: function(event){
-      var player = document.getElementById('video-player');
+      var app = this,
+          player = document.getElementById('video-player');
+      app.flags.playerLoaded = 2;
       player.classList.add('active');
       event.target.playVideo();
     },
@@ -275,6 +282,7 @@ var application = {
 };
 
 var setGoogleAPIKey = function(){
+  console.log('setGoogleAPIKey');
   var app = application;
   gapi.client.setApiKey("AIzaSyCHsiSAYtC01v6LqK0OWLGaVDHj9_K46ho");
   gapi.client.load('youtube', 'v3', function(){
@@ -287,5 +295,6 @@ var setGoogleAPIKey = function(){
 
 // YouTube player after the API code downloads.
 function onYouTubePlayerAPIReady() {
+  console.log('onYoutubePlayerAPIReady');
   application.onPlayerAPIReady();
 }
