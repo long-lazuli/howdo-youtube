@@ -5,12 +5,6 @@ var application = {
         empty_search_onStart: false,
         show_player_on_play: true
     },
-    flags: {
-      // 0 is not loadable
-      // 1 is loadable
-      // 2 is initialised
-      playerLoaded: 0
-    },
     pagination: {},
     searchCache: {},
     player: false,
@@ -246,7 +240,7 @@ var application = {
 
     onPlayerAPIReady: function(){
       var app = this;
-      app.flags.playerLoaded = 1;
+      console.log('onPlayerAPIReady');
       application.player = new YT.Player('video-frame', {
         events: {
             'onReady': app.onPlayerReady,
@@ -256,11 +250,9 @@ var application = {
       });
     },
 
-
     onPlayerReady: function(event){
       var app = this,
           player = document.getElementById('video-player');
-      app.flags.playerLoaded = 2;
       player.classList.add('active');
       event.target.playVideo();
     },
