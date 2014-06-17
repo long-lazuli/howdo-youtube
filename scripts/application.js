@@ -8,7 +8,7 @@ var application = {
     pagination: {},
     searchCache: {},
     player: false,
-    
+
     // The main function :
     init: function(){
       var app = this;
@@ -120,9 +120,24 @@ var application = {
           video = el.parentNode.parentNode,
           videoId = video.getAttribute('itemid');
 
-      if(app.options.show_player_on_play)
+      if(!app.player) app.getPlayer();
+
+      if(app.options.show_player_on_play == true )
         document.getElementById('hide-video-frame').checked = false;
+
       app.player.loadVideoById(videoId);
+    },
+
+    getPlayer: function(){
+      var app = this; 
+      app.player = new YT.Player('video-frame', {
+        playerVars: {'rel': 0, 'showinfo': 0, 'hidecontrols': 1 },
+        events: {
+            'onReady': app.onPlayerReady,
+            'onStateChange': app.onPlayerStateChange,
+            'onError': app.onPlayerError
+          }
+      });
     },
 
     pause: function(el){
@@ -166,8 +181,9 @@ var application = {
 
     enqueue: function(el){
       var app = this,
-          video = el.parentNode,
+          video = el.parentNode.parentNode,
           videoId = video.getAttribute('itemid');
+      console.log('Player Enqueue', videoId);
       app.player.cueVideoById(videoId);
     },
 
@@ -267,17 +283,18 @@ var application = {
     onPlayerReady: function(event){
       var app = this,
           player = document.getElementById('video-player');
-          
+
       player.classList.add('active');
       event.target.playVideo();
     },
     onPlayerStateChange: function(event) {
+      console.log('Player State:', event);
       var app = this;
       document.getElementById('video-player').setAttribute('data-state', event.data);
 
     },
     onPlayerError: function(event){
-      console.warn(event);
+      console.warn('Player error:', event);
     },
 
     onPlayerPlay: function(event){
