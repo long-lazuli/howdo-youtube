@@ -101,6 +101,7 @@ var application = {
 
         if(result.items){
 
+
           var videos = result.items;
           app._resetVideoList( "", videoList );
 
@@ -117,19 +118,21 @@ var application = {
 
     play: function(el){
       var app = this,
+      // TODO : findAncestor method :
+      //    video = app._findAncestor(el, '.video'),
           video = el.parentNode.parentNode,
           videoId = video.getAttribute('itemid');
 
       if(!app.player) app.getPlayer();
 
-      if(app.options.show_player_on_play == true )
+      if(app.options.show_player_on_play === true )
         document.getElementById('hide-video-frame').checked = false;
 
       app.player.loadVideoById(videoId);
     },
 
     getPlayer: function(){
-      var app = this; 
+      var app = this;
       app.player = new YT.Player('video-frame', {
         playerVars: {'rel': 0, 'showinfo': 0, 'hidecontrols': 1 },
         events: {
@@ -139,6 +142,22 @@ var application = {
           }
       });
     },
+
+    playNext: function(){
+      var app = this,
+      // TODO : findAncestor method :
+      //    video = app._findAncestor(el, '.video'),
+          video = document.querySelector("#video-playlist .video-list .video"),
+          videoId = video.getAttribute('itemid');
+
+      if(app.options.show_player_on_play === true )
+        document.getElementById('hide-video-frame').checked = false;
+
+      app.player.loadVideoById(videoId);
+      document.querySelector("#video-playlist .video-list").removeNode(video);
+
+    },
+
 
     pause: function(el){
       var app = this;
@@ -181,12 +200,13 @@ var application = {
 
     enqueue: function(el){
       var app = this,
-          video = el.parentNode.parentNode,
-          videoId = video.getAttribute('itemid');
-      console.log('Player Enqueue', videoId);
-      app.player.cueVideoById(videoId);
-    },
+          video = el.parentNode.parentNode.cloneNode(true);
 
+      console.log('Player Enqueue', video);
+
+      document.querySelector("#video-playlist .video-list").appendChild(video);
+
+    },
 
     _changePagingButton: function(prev, next, videoList){
       var app = this,
@@ -287,12 +307,19 @@ var application = {
       player.classList.add('active');
       event.target.playVideo();
     },
+
     onPlayerStateChange: function(event) {
       console.log('Player State:', event);
       var app = this;
       document.getElementById('video-player').setAttribute('data-state', event.data);
 
+      if (event.data == YT.PlayerState.ENDED ) {
+        console.log('should go to the next song !');
+        app.playNext();
+      }
+
     },
+
     onPlayerError: function(event){
       console.warn('Player error:', event);
     },
