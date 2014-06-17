@@ -13,9 +13,15 @@ var application = {
     init: function(){
       var app = this;
       app._log('Initialisation.');
- 
-      document.getElementById('search-button').disabled = false;
- 
+      app.initYTPlayerAPI();
+    },
+
+    initYTPlayerAPI: function(){
+      // Inject YouTube API script
+      var tag = document.createElement('script');
+      tag.src = "//www.youtube.com/player_api?version=3&enablejsapi=1";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     },
 
     // 'Private' methods will begin by a _    
@@ -23,6 +29,12 @@ var application = {
         if(this.options.debug){
           console.log(msg);
         }
+    },
+
+    enableSearch: function(){
+      var app = this;
+      app._log('Enabling search.');
+      document.getElementById('search-button').disabled = false;
     },
 
     search: function( extraParams, videoList ) {
@@ -240,7 +252,7 @@ var application = {
 
     onPlayerAPIReady: function(){
       var app = this;
-      console.log('onPlayerAPIReady');
+
       application.player = new YT.Player('video-frame', {
         events: {
             'onReady': app.onPlayerReady,
@@ -248,11 +260,14 @@ var application = {
             'onError': app.onPlayerError
           }
       });
+
+      app.enableSearch();
     },
 
     onPlayerReady: function(event){
       var app = this,
           player = document.getElementById('video-player');
+          
       player.classList.add('active');
       event.target.playVideo();
     },
@@ -274,12 +289,10 @@ var application = {
 };
 
 var setGoogleAPIKey = function(){
-  console.log('setGoogleAPIKey');
   var app = application;
   gapi.client.setApiKey("AIzaSyCHsiSAYtC01v6LqK0OWLGaVDHj9_K46ho");
   gapi.client.load('youtube', 'v3', function(){
     //Add function here if some action required immediately after the API loads
-    app._log('ready to search vidz !');
     application.init();
   });
 };
@@ -287,6 +300,5 @@ var setGoogleAPIKey = function(){
 
 // YouTube player after the API code downloads.
 function onYouTubePlayerAPIReady() {
-  console.log('onYoutubePlayerAPIReady');
   application.onPlayerAPIReady();
 }
