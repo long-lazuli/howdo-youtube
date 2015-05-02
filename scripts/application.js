@@ -24,7 +24,7 @@ var application = {
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     },
 
-    // 'Private' methods will begin by a _    
+    // 'Private' methods will begin by a _
     _log: function(msg){
         if(this.options.debug){
           console.log(msg);
@@ -39,7 +39,7 @@ var application = {
 
     search: function( extraParams, videoList ) {
       var app = this;
-   
+
       var q = document.getElementById('query').value;
       videoList = videoList || 'video-list-search';
       extraParams = extraParams || {};
@@ -202,7 +202,7 @@ var application = {
       var app = this,
           video = el.parentNode.parentNode.cloneNode(true);
 
-      console.log('Player Enqueue', video);
+      app._log('Player Enqueue', video);
 
       document.querySelector("#video-playlist .video-list").appendChild(video);
 
@@ -310,18 +310,20 @@ var application = {
 
     onPlayerStateChange: function(event) {
       console.log('Player State:', event);
+      app._log('Player State:', event);
+
       var app = this;
       document.getElementById('video-player').setAttribute('data-state', event.data);
 
-      if (event.data == YT.PlayerState.ENDED ) {
-        console.log('should go to the next song !');
+      if (event.data === YT.PlayerState.ENDED ) {
+        app._log('should go to the next song !');
         app.playNext();
       }
 
     },
 
     onPlayerError: function(event){
-      console.warn('Player error:', event);
+      app._log('Player error:', event);
     },
 
     onPlayerPlay: function(event){
@@ -329,7 +331,7 @@ var application = {
       app.search({relatedToVideoId: videoId, q: '', type: 'video'}, 'video-list-related');
 
     }
-    
+
 };
 
 var setGoogleAPIKey = function(){
