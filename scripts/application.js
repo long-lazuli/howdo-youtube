@@ -202,7 +202,7 @@ var application = {
       var app = this,
           video = el.parentNode.parentNode.cloneNode(true);
 
-      app._log('Player Enqueue', video);
+      console.log('Player Enqueue', video);
 
       document.querySelector("#video-playlist .video-list").appendChild(video);
 
@@ -310,20 +310,18 @@ var application = {
 
     onPlayerStateChange: function(event) {
       console.log('Player State:', event);
-      app._log('Player State:', event);
-
       var app = this;
       document.getElementById('video-player').setAttribute('data-state', event.data);
 
       if (event.data === YT.PlayerState.ENDED ) {
-        app._log('should go to the next song !');
+        console.log('should go to the next song !');
         app.playNext();
       }
 
     },
 
     onPlayerError: function(event){
-      app._log('Player error:', event);
+      console.warn('Player error:', event);
     },
 
     onPlayerPlay: function(event){
