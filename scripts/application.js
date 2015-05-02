@@ -154,7 +154,7 @@
         document.getElementById('hide-video-frame').checked = false;
 
       app.player.loadVideoById(videoId);
-      if( video !== null ) video.removeNode( true );
+      document.querySelector("#video-playlist .video-list").removeChild(video);
 
     },
 
