@@ -147,7 +147,7 @@
       var app = this,
       // TODO : findAncestor method :
       //    video = app._findAncestor(el, '.video'),
-          video = document.querySelector("#video-playlist .video-list .video")[0],
+          video = document.querySelector("#video-playlist .video-list .video"),
           videoId = video.getAttribute('itemid');
 
       if(app.options.show_player_on_play === true )
