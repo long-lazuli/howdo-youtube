@@ -240,7 +240,7 @@ var application = {
   _addToVideoList: function(video, videoList){
     var app = this;
     var node = document.getElementById(videoList).querySelector('.video-tpl').content.cloneNode(true);
-a
+
     // TODO: make that code fancy:
     node.querySelector('[itemprop=video]').setAttribute('itemid', video.id.videoId);
 
