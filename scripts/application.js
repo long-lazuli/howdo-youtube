@@ -117,6 +117,18 @@
 
     },
 
+    getPlayer: function(){
+      var app = this;
+      app.player = new YT.Player('video-frame', {
+        playerVars: {'rel': 0, 'showinfo': 0, 'hidecontrols': 1 },
+        events: {
+            'onReady': app.onPlayerReady,
+            'onStateChange': app.onPlayerStateChange,
+            'onError': app.onPlayerError
+          }
+      });
+    },
+
     play: function(el){
       var app = this,
       // TODO : findAncestor method :
@@ -130,18 +142,6 @@
         document.getElementById('hide-video-frame').checked = false;
 
       app.player.loadVideoById(videoId);
-    },
-
-    getPlayer: function(){
-      var app = this;
-      app.player = new YT.Player('video-frame', {
-        playerVars: {'rel': 0, 'showinfo': 0, 'hidecontrols': 1 },
-        events: {
-            'onReady': app.onPlayerReady,
-            'onStateChange': app.onPlayerStateChange,
-            'onError': app.onPlayerError
-          }
-      });
     },
 
     playNext: function(){
@@ -245,12 +245,16 @@
     _addToVideoList: function(video, videoList){
       var app = this;
       var node = document.getElementById(videoList).querySelector('.video-tpl').content.cloneNode(true);
+      app._log(video);
+      app._log(video.snippet);
 
       // TODO: make that code fancy:
       node.querySelector('[itemprop=video]').setAttribute('itemid', video.id.videoId);
 
+      node.querySelector('[itemprop=type]').innerHTML = video.id.kind;
       node.querySelector('[itemprop=name]').innerHTML = video.snippet.title;
       node.querySelector('[itemprop=description]').innerHTML = video.snippet.description;
+      node.querySelector('[itemprop=publishedAt]').innerHTML = video.snippet.publishedAt;
       node.querySelector('img').src = video.snippet.thumbnails.default.url;
       node.querySelector('[itemprop=embedURL]').setAttribute('content', "https://www.youtube.com/watch?v=" + video.id.videoId);
       node.querySelector('[itemprop=thumbnailURL]').setAttribute('content', video.snippet.thumbnails.default.url);
@@ -331,7 +335,7 @@
 
     onPlayerPlay: function(event){
       playerTitle.innerHTML = videoTitle.innerHTML;
-      app.search({relatedToVideoId: videoId, q: '', type: 'video'}, 'video-list-related');
+      //app.search({relatedToVideoId: videoId, q: '', type: 'video'}, 'video-list-related');
 
     }
 

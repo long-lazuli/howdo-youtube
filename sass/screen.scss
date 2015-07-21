@@ -1,8 +1,8 @@
 @import "compass";
 @import "compass/reset";
 @import "settings";
-@import 'susy'; 
-@import 'breakpoint'; 
+@import 'susy';
+@import 'breakpoint';
 //@import "mixins/usefull";
 
 
@@ -34,7 +34,7 @@ body {
 
 .container {
   @include pencil-borders;
-  
+
   padding: 1em;
   margin: 0 auto;
   display: block;
@@ -117,7 +117,7 @@ header {
   &[data-state='3']  h2:before { content: $fa-var-spinner; @include fa-spin; }// BUFFERING
   &[data-state='2']  h2:before { content: $fa-var-pause; }// PAUSED
   &[data-state='5']  h2:before { content: "CUES"; }// CUES
-  
+
     h2 {
       text-align: center;
       position: relative;
@@ -245,6 +245,14 @@ section {
     }
   }
 
+}
+
+#video-list-search .playlist-click {
+  display: none;
+}
+
+#video-playlist .video-click {
+  display: none;
 }
 
 #video-list-related {

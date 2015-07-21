@@ -1,4 +1,5 @@
-/* line 5, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+@charset "UTF-8";
+/* line 5, ../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,50 +21,50 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
 
-/* line 106, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/typography/_vertical_rhythm.scss */
+/* line 106, ../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/typography/_vertical_rhythm.scss */
 html {
   font-size: 100%;
   line-height: 0.375em;
@@ -74,7 +75,7 @@ html {
   line-height: 1.5em;
 }
 
-/* line 11, ../../../../../../../var/lib/gems/1.9.1/gems/susy-2.1.2/sass/susy/language/susy/_box-sizing.scss */
+/* line 21, ../../../lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/language/susy/_box-sizing.scss */
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -92,7 +93,7 @@ form button {
   border: dotted black 3px;
   border-width: 8px;
   border-image: url("images/borders-button.png") 8 8 8 8 stretch;
-  background-color: #e6e6e6;
+  background-color: #E6E6E6;
   background-clip: padding-box;
 }
 
@@ -135,46 +136,34 @@ label[for] {
   font-style: normal;
 }
 @-moz-keyframes spin {
-  /* line 13, ../sass/custom/_fa-spin.scss */
   0% {
     -moz-transform: rotate(0deg);
   }
-
-  /* line 14, ../sass/custom/_fa-spin.scss */
   100% {
     -moz-transform: rotate(359deg);
   }
 }
 @-webkit-keyframes spin {
-  /* line 17, ../sass/custom/_fa-spin.scss */
   0% {
     -webkit-transform: rotate(0deg);
   }
-
-  /* line 18, ../sass/custom/_fa-spin.scss */
   100% {
     -webkit-transform: rotate(359deg);
   }
 }
 @-o-keyframes spin {
-  /* line 21, ../sass/custom/_fa-spin.scss */
   0% {
     -o-transform: rotate(0deg);
   }
-
-  /* line 22, ../sass/custom/_fa-spin.scss */
   100% {
     -o-transform: rotate(359deg);
   }
 }
 @keyframes spin {
-  /* line 25, ../sass/custom/_fa-spin.scss */
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
-
-  /* line 29, ../sass/custom/_fa-spin.scss */
   100% {
     -webkit-transform: rotate(359deg);
     transform: rotate(359deg);
@@ -209,7 +198,7 @@ body {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 12, ../../../../../../../var/lib/gems/1.9.1/gems/susy-2.1.2/sass/susy/output/support/_clearfix.scss */
+/* line 12, ../../../lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
 .container:after {
   content: " ";
   display: block;
@@ -222,7 +211,7 @@ body {
     margin-left: auto;
     margin-right: auto;
   }
-  /* line 12, ../../../../../../../var/lib/gems/1.9.1/gems/susy-2.1.2/sass/susy/output/support/_clearfix.scss */
+  /* line 12, ../../../lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
   .container:after {
     content: " ";
     display: block;
@@ -360,19 +349,19 @@ header form button:after {
 }
 /* line 114, ../sass/screen.scss */
 #video-player[data-state='-1'] h2:before {
-  content: "\f008";
+  content: "";
 }
 /* line 115, ../sass/screen.scss */
 #video-player[data-state='0'] h2:before {
-  content: "\f04d";
+  content: "";
 }
 /* line 116, ../sass/screen.scss */
 #video-player[data-state='1'] h2:before {
-  content: "\f04b";
+  content: "";
 }
 /* line 117, ../sass/screen.scss */
 #video-player[data-state='3'] h2:before {
-  content: "\f110";
+  content: "";
   -webkit-animation: spin 2s infinite linear;
   -moz-animation: spin 2s infinite linear;
   -o-animation: spin 2s infinite linear;
@@ -380,7 +369,7 @@ header form button:after {
 }
 /* line 118, ../sass/screen.scss */
 #video-player[data-state='2'] h2:before {
-  content: "\f04c";
+  content: "";
 }
 /* line 119, ../sass/screen.scss */
 #video-player[data-state='5'] h2:before {
@@ -430,7 +419,7 @@ header form button:after {
 /* line 58, ../sass/custom/_form.scss */
 #video-player label:after {
   content: attr("alt");
-  content: "\f151";
+  content: "";
 }
 /* line 151, ../sass/screen.scss */
 #video-player iframe {
@@ -446,7 +435,7 @@ header form button:after {
 }
 /* line 162, ../sass/screen.scss */
 #video-player #hide-video-frame:checked ~ label:after {
-  content: "\f150";
+  content: "";
 }
 /* line 165, ../sass/screen.scss */
 #video-player #hide-video-frame:checked ~ iframe {
@@ -494,7 +483,7 @@ section h3 {
 }
 /* line 205, ../sass/screen.scss */
 section .video.active {
-  background-color: #e6e6e6;
+  background-color: #E6E6E6;
 }
 /* line 209, ../sass/screen.scss */
 section .video-thumb,
@@ -558,12 +547,22 @@ section aside {
   }
 }
 
-/* line 251, ../sass/screen.scss */
+/* line 250, ../sass/screen.scss */
+#video-list-search .playlist-click {
+  display: none;
+}
+
+/* line 254, ../sass/screen.scss */
+#video-playlist .video-click {
+  display: none;
+}
+
+/* line 259, ../sass/screen.scss */
 #video-list-related [itemprop=description] {
   display: none;
 }
 
-/* line 257, ../sass/screen.scss */
+/* line 265, ../sass/screen.scss */
 aside h3 {
   width: 100%;
   float: right;
@@ -571,30 +570,30 @@ aside h3 {
   text-align: center;
 }
 @media (min-width: 640px) {
-  /* line 257, ../sass/screen.scss */
+  /* line 265, ../sass/screen.scss */
   aside h3 {
     width: 30.37975%;
     float: right;
     margin-right: 0;
   }
 }
-/* line 264, ../sass/screen.scss */
+/* line 272, ../sass/screen.scss */
 aside h3 {
   border: 2px solid black;
   border-radius: 2px 2px 0 0;
 }
-/* line 268, ../sass/screen.scss */
+/* line 276, ../sass/screen.scss */
 aside li {
   border-color: block;
   border-width: 1px 2px;
   border-style: solid;
 }
-/* line 273, ../sass/screen.scss */
+/* line 281, ../sass/screen.scss */
 aside li:last-child {
   border-bottom-width: 2px;
   border-radius: 0 0 2px 2px;
 }
-/* line 277, ../sass/screen.scss */
+/* line 285, ../sass/screen.scss */
 aside ol {
   margin-bottom: 1em;
   width: 100%;
@@ -602,23 +601,23 @@ aside ol {
   margin-right: 0;
 }
 @media (min-width: 640px) {
-  /* line 277, ../sass/screen.scss */
+  /* line 285, ../sass/screen.scss */
   aside ol {
     width: 30.37975%;
     float: right;
     margin-right: 0;
   }
 }
-/* line 283, ../sass/screen.scss */
+/* line 291, ../sass/screen.scss */
 aside ol li {
   width: 100%;
 }
-/* line 286, ../sass/screen.scss */
+/* line 294, ../sass/screen.scss */
 aside nav {
   display: none;
 }
 
-/* line 291, ../sass/screen.scss */
+/* line 299, ../sass/screen.scss */
 ol.search-list li {
   text-align: center;
 }

@@ -51,12 +51,18 @@
           <meta itemprop="thumbnailURL" content="" />
 
           <div class="video-desc">
+            <span itemprop="type"></span>
             <h4 itemprop="name"></h4>
-            <span itemprop="description"></span>
+            <div itemprop="description"></div>
+            <div itemprop="publishedAt"></div>
           </div>
           <div class="video-actions" itemprop="actions">
             <a href="#play" class="video-click play" onclick="application.play(this);">Play</a>
             <a href="#enqueue" class="video-click enqueue" onclick="application.enqueue(this);">Enqueue</a>
+            <a href="#play" class="playlist-click play" onclick="application.play(this);">Play</a>
+            <a href="#moveUp" class="playlist-click move-up" onclick="application.moveUp(this);">Up</a>
+            <a href="#moveDown" class="playlist-click move-down" onclick="application.moveUp(this);">Down</a>
+            <a href="#remove" class="playlist-click remove" onclick="application.remove(this);">Remove</a>
           </div>
 
         </div>
