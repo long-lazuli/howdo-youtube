@@ -19,12 +19,13 @@
     initYTPlayerAPI: function(){
       // Inject YouTube API script
       var tag = document.createElement('script');
-      tag.src = "//www.youtube.com/player_api?version=3&enablejsapi=1";
+      tag.src = "https://www.youtube.com/player_api?version=3&enablejsapi=1";
       var firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     },
 
     // 'Private' methods will begin by a _
+
     _log: function(msg){
         if(this.options.debug){
           console.log(msg);
@@ -210,24 +211,28 @@
 
     _changePagingButton: function(prev, next, videoList){
       var app = this,
-          nextPageButton = document.getElementById(videoList).querySelector('.next-button'),
-          prevPageButton = document.getElementById(videoList).querySelector('.prev-button');
+          nextPageButtons = document.getElementById(videoList).querySelectorAll('.next-button'),
+          prevPageButtons = document.getElementById(videoList).querySelectorAll('.prev-button');
 
       app.pagination[videoList] = [];
       app.pagination[videoList].prevPage = prev || false;
       app.pagination[videoList].nextPage = next || false;
 
-      if(next){
-        nextPageButton.removeAttribute('disabled');
-      }else{
-        nextPageButton.setAttribute('disabled', true);
-      }
+    	[].forEach.call(nextPageButtons, function(nextPageButton) {
+	      if(next){
+		        nextPageButton.removeAttribute('disabled');
+	      }else{
+		        nextPageButton.setAttribute('disabled', true);
+	      }
+			});
 
-      if(prev){
-        prevPageButton.removeAttribute('disabled');
-      }else{
-        prevPageButton.setAttribute('disabled', true);
-      }
+    	[].forEach.call(prevPageButtons, function(prevPageButton) {
+	      if(prev){
+	        prevPageButton.removeAttribute('disabled');
+	      }else{
+	        prevPageButton.setAttribute('disabled', true);
+	      }
+			});
 
     },
 
@@ -247,7 +252,7 @@
       node.querySelector('[itemprop=name]').innerHTML = video.snippet.title;
       node.querySelector('[itemprop=description]').innerHTML = video.snippet.description;
       node.querySelector('img').src = video.snippet.thumbnails.default.url;
-      node.querySelector('[itemprop=embedURL]').setAttribute('content', "http://www.youtube.com/watch?v=" + video.id.videoId);
+      node.querySelector('[itemprop=embedURL]').setAttribute('content', "https://www.youtube.com/watch?v=" + video.id.videoId);
       node.querySelector('[itemprop=thumbnailURL]').setAttribute('content', video.snippet.thumbnails.default.url);
 
       document.getElementById(videoList).querySelector('.video-list').appendChild(node);
