@@ -343,7 +343,7 @@
 
 var setGoogleAPIKey = function(){
   var app = application;
-  gapi.client.setApiKey("AIzaSyCHsiSAYtC01v6LqK0OWLGaVDHj9_K46ho");
+  gapi.client.setApiKey("AIzaSyAgcHOjexL9XtQ1syy3Dtrx2B5G9GIsMiA");
   gapi.client.load('youtube', 'v3', function(){
     //Add function here if some action required immediately after the API loads
     application.init();
